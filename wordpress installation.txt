@@ -1,0 +1,28 @@
+yum update -y
+yum install httpd php php-mysql stress -y
+cd /var/www/html
+echo "healthy" > healthy.html
+wget https://wordpress.org/latest.tar.gz  //wordpress download
+tar -xzf latest.tar.gz
+cp -r wordpress/* /var/www/html
+chmod -R 755 wp-content
+chown -R apache:apache wp-content
+service httpd start
+chkconfig httpd on
+vim test.php
+<?php 
+$username = "pixel2pixel"; 
+$password = "pixel2pixel"; 
+$hostname = "pixel2pixel.c16flutlzbp4.ap-south-1.rds.amazonaws.com"; 
+$dbname = "pixel2pixel";
+
+//connection to the database
+$dbhandle = mysql_connect($hostname, $username, $password) or die("Unable to connect to MySQL"); 
+echo "Connected to MySQL using username - $username, password - $password, host - $hostname<br>"; 
+$selected = mysql_select_db("$dbname",$dbhandle)   or die("Unable to connect to MySQL DB - check the database name and try again."); 
+?>
+
+create vim wp-config.php
+copy code from wordpress ip 
+update wp-config file and paste this line to remove ftp authentication from wordpress 
+define('FS_METHOD','direct');

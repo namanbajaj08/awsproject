@@ -1,0 +1,7 @@
+UPDATE wp_options SET option_value = replace(option_value, 'http://13.233.49.50', 'http://www.easytechstudios.com') WHERE option_name = 'home' OR option_name = 'siteurl';
+
+UPDATE wp_posts SET guid = replace(guid, 'http://13.233.49.50','http://www.easytechstudios.com');
+
+UPDATE wp_posts SET post_content = replace(post_content, 'http://13.233.49.50', 'http://www.easytechstudios.com');
+
+UPDATE wp_postmeta SET meta_value = replace(meta_value,'http://13.233.49.50','http://www.easytechstudios.com');
